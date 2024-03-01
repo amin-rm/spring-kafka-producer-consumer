@@ -3,6 +3,8 @@
 # Install Maven
 sudo apt update
 sudo apt install maven
+sudo apt install docker-compose
+sudo apt install docker
 
 # Change directory to kafkawithzookeeper
 cd kafkawithzookeeper || exit
