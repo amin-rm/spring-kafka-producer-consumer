@@ -1,0 +1,23 @@
+In our case, we will be working with the Student entity ..
+So we'll use curl command to make a POST request with the Student attributes :
+
+
+-----------------------------------------------------------------------------
+the curl command will use data.json file as a body , in this format :
+{
+  "id": "11111",
+  "studentName": "aaaaa",
+  "studentLastName": "bbbb"
+}
+------------------------------------------------------------------------------
+Now to make the POST request using curl :
+
+curl -X POST -H "Content-Type: application/json" --data @data.json http://localhost:8089/publish
+
+
+Alternatively, you can use Postman .. 
+
+
+------------------------------------------------------------------------------
+Now  to see the messages published to a kafka topic, we need to check the consumer console  (the output of the bash script in this case)
+
