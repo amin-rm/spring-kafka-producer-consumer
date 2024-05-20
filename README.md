@@ -1,15 +1,39 @@
-This will guide you to Setup and configure the kafka producer and consumer in Debian Distros like Ubuntu ..
+# Kafka Producer/Consumer Demo
 
-You can skip this if you have JDK 17 installed in your system:
+This project demonstrates a simple Apache Kafka producer/consumer implementation using Spring Boot.
 
-sudo bash install_java17.sh
+## Requirements
 
-##########################################################################################
-Then, execute this to setup and start the kafka, zookeeper,producer and consumer servers:
+- JDK 17
+- Docker
 
-sudo bash start_servers.sh
+## Installation
 
+1. Install JDK 17 if not already installed:
+    ```bash
+    sudo bash install_java17.sh
+    ```
 
+## Usage
 
-To test the cluster, proceed to the "verify" directory for more information ....
+1. Run the following command to start Kafka, Zookeeper, producer, and consumer servers:
+    ```bash
+    sudo bash start_servers.sh
+    ```
+
+## Directory Structure
+
+- `producer`: Kafka producer Spring Boot project.
+- `consumer`: Kafka consumer Spring Boot project.
+- `kafkawithzookeeper/docker-compose.yml`: Docker Compose file to start Kafka and Zookeeper locally.
+- `install_java17.sh`: Bash script to install JDK 17.
+- `start_servers.sh`: Bash script to start Kafka, Zookeeper, producer, and consumer servers.
+
+## Verification
+
+After starting the servers, navigate to the `verify` directory for further testing and verification.
+
+## Note
+
+This guide assumes a Debian-based distribution like Ubuntu. Please adjust commands accordingly for other systems.
 
