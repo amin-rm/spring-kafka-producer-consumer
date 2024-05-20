@@ -10,6 +10,7 @@ This project demonstrates a simple Apache Kafka producer/consumer implementation
 ## Installation
 
 1. Install JDK 17 if not already installed:
+
     ```bash
     sudo bash install_java17.sh
     ```
@@ -17,6 +18,7 @@ This project demonstrates a simple Apache Kafka producer/consumer implementation
 ## Usage
 
 1. Run the following command to start Kafka, Zookeeper, producer, and consumer servers:
+
     ```bash
     sudo bash start_servers.sh
     ```
