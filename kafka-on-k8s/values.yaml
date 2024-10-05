@@ -1,0 +1,89 @@
+# Default replicas for the cluster operator
+replicas: 1
+
+# Limit the namespaces watched to reduce resource usage.
+watchNamespaces: [default]  # Specify only necessary namespaces
+watchAnyNamespace: false
+
+# Image configuration
+defaultImageRegistry: quay.io
+defaultImageRepository: strimzi
+defaultImageTag: 0.43.0
+
+image:
+  registry: ""
+  repository: ""
+  name: operator
+  tag: ""
+
+# Logging configuration
+logLevel: ${env:STRIMZI_LOG_LEVEL:-WARN}  # Change log level to WARN to reduce logging overhead
+
+# Decrease the reconciliation interval to reduce the frequency of checks.
+fullReconciliationIntervalMs: 300000  # 5 minutes instead of 2 minutes
+operationTimeoutMs: 300000  # Keep the same timeout for operations
+
+# Limit the temporary directory size to save resources.
+tmpDirSizeLimit: 512Ki
+
+# Configure resource requests and limits to be as lightweight as possible.
+resources:
+  limits:
+    memory: 256Mi  # Reduce memory limit from 384Mi to 256Mi
+    cpu: 500m      # Reduce CPU limit from 1000m to 500m
+  requests:
+    memory: 128Mi  # Reduce memory request to 128Mi
+    cpu: 100m      # Reduce CPU request to 100m
+
+# Liveness and readiness probe configurations optimized for a small cluster.
+livenessProbe:
+  initialDelaySeconds: 20
+  periodSeconds: 60  # Increase period to reduce probe frequency
+readinessProbe:
+  initialDelaySeconds: 20
+  periodSeconds: 60  # Increase period to reduce probe frequency
+
+# Priority and node selector for better scheduling on smaller nodes.
+priorityClassName: ""
+nodeSelector: {"kubernetes.io/os": "linux"}
+tolerations: []
+
+# Pod Security and Affinity configurations
+podSecurityContext: {}
+securityContext: {}
+affinity: {}
+
+# Service account configuration
+rbac:
+  create: true
+serviceAccountCreate: true
+serviceAccount: strimzi-cluster-operator
+
+# Disable non-essential components to reduce footprint
+dashboards:
+  enabled: false  # Disable Grafana dashboards
+createGlobalResources: false  # Disable global resources if testing in a single namespace
+
+# Disable optional network policies for a lightweight setup
+generateNetworkPolicy: false
+
+# Enable pod disruption budget but limit availability requirements
+podDisruptionBudget:
+  enabled: false
+
+# Kafka container resource settings (if using Kafka within the same Helm chart)
+kafka:
+  image:
+    registry: ""
+    repository: ""
+    name: kafka
+    tagPrefix: ""
+  resources:
+    limits:
+      memory: 512Mi
+      cpu: 500m
+    requests:
+      memory: 256Mi
+      cpu: 100m
+
+# Adjust other Kafka-related component resources similarly (Connect, MirrorMaker, etc.)
