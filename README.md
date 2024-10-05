@@ -1,5 +1,5 @@
 
-# Kafka Producer/Consumer Demo
+# About
 
 This project demonstrates a simple Apache Kafka producer/consumer implementation using Spring Boot.
 
