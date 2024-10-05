@@ -1,11 +1,13 @@
+
 # Kafka Producer/Consumer Demo
 
 This project demonstrates a simple Apache Kafka producer/consumer implementation using Spring Boot.
 
 ## Requirements
 
-- JDK 17
-- Docker
+- JDK 17+
+- Docker CE + Docker Compose (if you want to run kafka and zookeeper in docker containers)
+- Kubernetes (if you want to deploy kafka/zk in k8s, please proceed to 'kafka-on-k8s/' for more info)
 
 ## Installation
 
